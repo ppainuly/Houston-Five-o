@@ -32,6 +32,11 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+
 
 @app.route("/api/incidents")
 def incidentdata():
