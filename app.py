@@ -36,6 +36,10 @@ def about():
 def search():
     return render_template("search.html")
 
+@app.route("/model")
+def model():
+    return render_template("model.html")
+
 
 
 @app.route("/api/incidents")

@@ -1,0 +1,51 @@
+#map {
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+#map img {
+ max-width: none;
+ min-width: 0px;
+ height: auto;
+
+}
+
+ #geocoder-container {
+  position: absolute;
+  top: 5;
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+#geocoder-container > div {
+  min-width: 50%;
+  margin-left: 25%;
+}
+.navbar {
+  background-color:#4d984e;
+}
+a#list-btn, a#toolsDrop.dropdown-toggle, a#full-extent-btn, a#about-btn{
+  color:white
+}
+.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 25px;
+  color: #FFFFFF;
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+.navbar-header .navbar-icon-container {
+  margin-right: 15px;
+}
+.navbar-header .navbar-icon {
+  line-height: 50px;
+  height: 50px;
+}
+.navbar-header a.navbar-icon {
+  margin-left: 25px;
+}
+.masthead{
+  padding-top: 20px;
+}

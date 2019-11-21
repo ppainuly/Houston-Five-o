@@ -21,6 +21,7 @@
     href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
   <link rel="stylesheet"
     href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+
   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css') }}"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 
@@ -29,6 +30,7 @@
   <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='img/favicon-152.png') }}">
   <link rel="icon" sizes="196x196" href="{{ url_for('static',filename='img/favicon-196.png') }}">
   <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='img/favicon.ico') }}">
+
 </head>
 
 <body>
@@ -66,6 +68,8 @@
 
           <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i
                 class="fa fa-list white"></i>&nbsp;&nbsp;Show Sidebar</a></li>
+                <li><a href="{{ url_for('search') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                  class="fa fa-clock-o"></i>&nbsp;&nbsp;Predictor</a></li>
         </ul>
       </div>
       <!--/.navbar-collapse -->
@@ -91,6 +95,7 @@
                 <div class="blink_me" style="padding-top:5px;font-size: 17px;color:red;"><span
                     class="glyphicon glyphicon-time"></span> Live</div>
               </div>
+
             </div>
           </div>
 

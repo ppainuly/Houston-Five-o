@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Add a geocoder</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+<style>
+body { margin:0; padding:10; }
+#map { position:absolute; top:30% ; bottom:0; width:60%; left: 15%; height: 60%;}
+</style>
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static',filename='img/favicon-76.png') }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static',filename='img/favicon-120.png') }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='img/favicon-152.png') }}">
+  <link rel="icon" sizes="196x196" href="{{ url_for('static',filename='img/favicon-196.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='img/favicon.ico') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="row justify-content-start">
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <div class="navbar-icon-container">
+                      <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+                      <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i
+                          class="fa fa-search fa-lg white"></i></a>
+                    </div>
+                    <a class="navbar-brand" href="#">HOUSTON Five-o</a>
+                  </div>
+                  <div class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right" role="search">
+                      <!-- 
+                        <div class="form-group has-feedback">
+                            <input id="searchbox" type="text" placeholder="Search" class="form-control">
+                            <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+                        </div> -->
+                    </form>
+                    <ul class="nav navbar-nav">
+            
+            
+                        <li><a href="{{ url_for('about') }}" style="color:white;"><i
+                          class="fa fa-question-circle white"></i>About Us</a></li>
+            
+                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                            class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Full Map View</a></li>
+            
+                      <li><a href="{{ url_for('crime') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                            class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Historical Map</a></li>
+                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                              class="fa fa-clock-o"></i>&nbsp;&nbsp;Live Map</a></li>
+            
+                      <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i
+                            class="fa fa-list white"></i>&nbsp;&nbsp;Show Sidebar</a></li>
+                    </ul>
+                  </div>
+                  <!--/.navbar-collapse -->
+                </div>
+        </div>
+    </div>
+    <div class="row justify-content-start" style="margin-left: 20%; padding-bottom: 10px;">
+            <h1>Houston Five-O Predictor</h1>
+            <h4>Model For Selected Address</h4>
+        </div>
+
+    <div class="row justify-content-start">
+        <div>
+        <div id='map'></div>
+    </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+ 
+
+ 
+</body>
+</html>
