@@ -39,7 +39,14 @@
             <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='img/favicon-152.png') }}">
             <link rel="icon" sizes="196x196" href="{{ url_for('static',filename='img/favicon-196.png') }}">
             <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='img/favicon.ico') }}">
-    </head>
+            <!-- Weather Widget links -->
+            <!-- Stylesheets -->
+            <link rel='stylesheet'href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+            <link rel='stylesheet'href="{{url_for{'static', filename='css/bootstrap-extend.min.css')}}">
+            <link rel='stylesheet'href="{{url_for('static', filename='css/site.min.css')}}">
+            <!-- Skin tools -->
+            <link rel='stylesheet'href="{{url_for('static', filename='css/skintools.min.css')}}">
+          </head>
     <body>
         <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
     
@@ -83,11 +90,11 @@
 </header>
 
         <!-- Weather Widget Start -->
-        <!-- <div class="page-content page-content-example container-fluid">
+        <div class="page-content page-content-example container-fluid">
             <div class="row">
-              <div class="col-xxl-7"> -->
+              <div class="col-xxl-7">
                 <!-- Card -->
-                <!-- <div class="card card-shadow weather">
+                <div class="card card-shadow weather">
                   <div class="card-header card-header-transparent cover overlay">
                     <img class="cover-image h-xl-450" src="../../global/photos/city-7-960x480.jpg"
                       alt="...">
@@ -202,7 +209,7 @@
                       </div>
                     </div>
                   </div>
-                </div> -->
+                </div>
                 <!-- End Card -->
               </div>
     </body>
