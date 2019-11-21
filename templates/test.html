@@ -1,10 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<title>Houston Five-0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <head>
-
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+            <meta name="mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="theme-color" content="#000000">
+            <meta name="description" content="">
+            <meta name="author" content="">
+            <title>CRIMETRACKER - Houston</title>
+        
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+            <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+            <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
+            <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+            <!-- <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css"> -->
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/line-icons.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/nivo-lightbox.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">  
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+        
+            <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static',filename='img/favicon-76.png') }}">
+            <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static',filename='img/favicon-120.png') }}">
+            <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='img/favicon-152.png') }}">
+            <link rel="icon" sizes="196x196" href="{{ url_for('static',filename='img/favicon-196.png') }}">
+            <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='img/favicon.ico') }}">
     </head>
     <body>
-        <h1>Test</h1>
         <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+    
+        <!-- Navbar Start -->
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <div class="navbar-icon-container">
+              <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+              <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i
+                  class="fa fa-search fa-lg white"></i></a>
+            </div>
+            <a class="navbar-brand" href="#" style ="padding-top:15px;padding-left: 10px;">HOUSTON Five-o</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" role="search">
+              <!-- 
+                <div class="form-group has-feedback">
+                    <input id="searchbox" type="text" placeholder="Search" class="form-control">
+                    <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+                </div> -->
+            </form>
+            <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('crime') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                    class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Historical Map</a></li>
+              <li><a href="{{ url_for('index') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                      class="fa fa-clock-o"></i>&nbsp;&nbsp;Live Map</a></li>
+    
+            </ul>
+          </div>
+          <!--/.navbar-collapse -->
+        </div>
+    </div>
+<header class ="main-banner text-center text-white">
+    <div class ="main-banner-content">
+        <div class="container">
+            <h1 class="wow fadeInDown animated" data-wow-duration ="1000ms" data-wow-delay="0.03"style="visibility: visible;-webkit-animation-duration-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 0.03; -moz-animation-delay: 0.03; animation-delay: 0.3s;">Houston Five-O</h1>
+            <h5 class="wow fadeInDown animated" data-wow-duration ="1000ms" data-wow-delay="0.03"style="visibility: visible;-webkit-animation-duration-duration: 1000ms; -moz-animation-duration: 1000ms; animation-duration: 1000ms;-webkit-animation-delay: 0.03; -moz-animation-delay: 0.03; animation-delay: 0.3s;">Tracking Houston crime in real time and historicaly</h5>
+        </div>
+    </div>
+</header>
+
+        <!-- Weather Widget Start -->
+        <!-- <div class="page-content page-content-example container-fluid">
+            <div class="row">
+              <div class="col-xxl-7"> -->
+                <!-- Card -->
+                <!-- <div class="card card-shadow weather">
+                  <div class="card-header card-header-transparent cover overlay">
+                    <img class="cover-image h-xl-450" src="../../global/photos/city-7-960x480.jpg"
+                      alt="...">
+                    <div class="overlay-panel">
+                      <span class="font-size-40 white">City</span>
+                      <div class="weather-location input-search float-right mt-10">
+                        <input type="text" class="form-control form-control-sm grey-200" placeholder="Location">
+                        <button type="submit" class="input-search-btn">
+                          <i class="icon wb-search grey-400" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="card-footer bg-white">
+                    <div class="row no-space">
+                      <div class="col-lg-4 col-md-5 pl-30 py-30">
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="vertical-align">
+                              <i class="vertical-align-middle wi-day-sunny font-size-50 mt-10"></i>
+                            </div>
+                          </div>
+      
+                          <div class="col-8">
+                            <span class="blue-600 font-size-40">20°
+                              <span class="font-size-30">C</span>
+                            </span>
+                            <span class="font-size-18 blue-grey-700">/</span>
+                            <span class="font-size-18 blue-grey-700">7°
+                              <span class="font-size-16">C</span>
+                            </span>
+                            <p class="font-size-14 mb-0">MONDAY 11.11.2017</p>
+                          </div>
+                        </div>
+                      </div>
+      
+                      <div class="col-lg-8 col-md-7">
+                        <div class="row no-space text-center">
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">TUE</div>
+                                <i class="wi-day-sunny font-size-24 mb-10"></i>
+                                <div>24°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">WED</div>
+                                <i class="wi-day-cloudy font-size-24 mb-10"></i>
+                                <div>21°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">THU</div>
+                                <i class="wi-day-sunny font-size-24 mb-10"></i>
+                                <div>25°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">FRI</div>
+                                <i class="wi-day-cloudy-gusts font-size-24 mb-10"></i>
+                                <div>20°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">SAT</div>
+                                <i class="wi-day-lightning font-size-24 mb-10"></i>
+                                <div>18°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+      
+                          <div class="col-2">
+                            <div class="weather-day vertical-align">
+                              <div class="vertical-align-middle font-size-16">
+                                <div class="mb-10">SUN</div>
+                                <i class="wi-day-storm-showers font-size-24 mb-10"></i>
+                                <div>14°
+                                  <span class="font-size-12">C</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- End Card -->
+              </div>
     </body>
 </html>
