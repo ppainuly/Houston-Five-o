@@ -1,10 +1,11 @@
 function buildPlot(){
     
     let url = `/plot`;
+    // but displaying in /search
     
-    d3.json(url).then(data => {
-        let hours_x = data.hour;
-        let crimeSeverity_y = data.crimeSeverity;
+    d3.json(url).then(plot_data => {
+        let hours_x = plot_data.hour;
+        let crimeSeverity_y = plot_data.crimeSeverity;
     
         console.log(hours_x);
         console.log(crimeSeverity_y);
