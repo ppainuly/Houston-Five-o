@@ -11,13 +11,22 @@
     <title>Simple HTML Page with Bootstrap and Mapbox GL</title>
 
     <!-- Mapbox GL JS js and css -->
-     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
-     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+     <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' /> -->
+     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
      
 
      <!-- mapbox geocoder -->
-     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
+     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+     <!-- <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' /> -->
+    
+    
+      
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -102,8 +111,8 @@
       <!-- Main Content-->
       <div class="masthead">
           <h1>Houston Five-o Crime Predictor</h1>
-          <h3 class="lead">Select the address you want to see the prediction for - </h3>
-        <h3 class="text-muted">Map</h3>
+          <h3 class="lead">Select the address you want and click on the location marker to view our crime prediction - </h3>
+        <h3 class="text-muted">Houston Map</h3>
         <div class="row">
           <div class="col-md-12">
             <div id="map"></div>
@@ -125,7 +134,7 @@
             <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Panel title</h3>
+                  <h3 class="panel-title">Location Prediciton</h3>
                   <div class="panel-body">
 
                     </div>
@@ -135,13 +144,13 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Panel title</h3>
+                    <h3 class="panel-title">Location</h3>
                     <div class="panel-body">
                         <div class="weather-day vertical-align">
                             <div class="vertical-align-middle font-size-16">
-                              <div class="mb-10">TUE</div>
+                              <div class="mb-10">AGORA</div>
                               <i class="wi-day-sunny font-size-24 mb-10"></i>
-                              <div>24°
+                              <div>November 21, 2019
                                 <span class="font-size-12">C</span>
                               </div>
                             </div>
@@ -156,7 +165,7 @@
         <div class="row" id="data2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Panel title</h3>
+                  <h3 class="panel-title">Likelihood of Crime by Hour</h3>
                 </div>
                 <div class="panel-body" >
                     <div id="myDiv" style="width: auto;"></div>
@@ -173,7 +182,7 @@
         <div class="row" id="data3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Panel title</h3>
+                  <h3 class="panel-title">Severity by Hour</h3>
                 </div>
                 <div class="panel-body" >
                     <!-- <div id="myDiv" style="width: auto;"></div> -->
