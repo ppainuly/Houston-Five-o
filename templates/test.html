@@ -89,128 +89,81 @@
     </div>
 </header>
 
-        <!-- Weather Widget Start -->
-        <div class="page-content page-content-example container-fluid">
-            <div class="row">
-              <div class="col-xxl-7">
-                <!-- Card -->
-                <div class="card card-shadow weather">
-                  <div class="card-header card-header-transparent cover overlay">
-                    <img class="cover-image h-xl-450" src="../../global/photos/city-7-960x480.jpg"
-                      alt="...">
-                    <div class="overlay-panel">
-                      <span class="font-size-40 white">City</span>
-                      <div class="weather-location input-search float-right mt-10">
-                        <input type="text" class="form-control form-control-sm grey-200" placeholder="Location">
-                        <button type="submit" class="input-search-btn">
-                          <i class="icon wb-search grey-400" aria-hidden="true"></i>
-                        </button>
+</div> <!-- col -->
+</div> <!-- row -->
+
+<div class="row" id="data1">
+
+  
+    <!-- START YOUR BOOTSTRAP GOODNESS HERE -->
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Location Prediciton</h3>
+          <div class="panel-body">
+
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Location</h3>
+            <div class="panel-body">
+                <div class="weather-day vertical-align">
+                    <div class="vertical-align-middle font-size-16">
+                      <div class="mb-10">AGORA</div>
+                      <i class="wi-day-sunny font-size-24 mb-10"></i>
+                      <div>November 21, 2019
+                        <span class="font-size-12">C</span>
                       </div>
                     </div>
                   </div>
-      
-                  <div class="card-footer bg-white">
-                    <div class="row no-space">
-                      <div class="col-lg-4 col-md-5 pl-30 py-30">
-                        <div class="row">
-                          <div class="col-4">
-                            <div class="vertical-align">
-                              <i class="vertical-align-middle wi-day-sunny font-size-50 mt-10"></i>
-                            </div>
-                          </div>
-      
-                          <div class="col-8">
-                            <span class="blue-600 font-size-40">20°
-                              <span class="font-size-30">C</span>
-                            </span>
-                            <span class="font-size-18 blue-grey-700">/</span>
-                            <span class="font-size-18 blue-grey-700">7°
-                              <span class="font-size-16">C</span>
-                            </span>
-                            <p class="font-size-14 mb-0">MONDAY 11.11.2017</p>
-                          </div>
-                        </div>
-                      </div>
-      
-                      <div class="col-lg-8 col-md-7">
-                        <div class="row no-space text-center">
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">TUE</div>
-                                <i class="wi-day-sunny font-size-24 mb-10"></i>
-                                <div>24°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">WED</div>
-                                <i class="wi-day-cloudy font-size-24 mb-10"></i>
-                                <div>21°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">THU</div>
-                                <i class="wi-day-sunny font-size-24 mb-10"></i>
-                                <div>25°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">FRI</div>
-                                <i class="wi-day-cloudy-gusts font-size-24 mb-10"></i>
-                                <div>20°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">SAT</div>
-                                <i class="wi-day-lightning font-size-24 mb-10"></i>
-                                <div>18°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="col-2">
-                            <div class="weather-day vertical-align">
-                              <div class="vertical-align-middle font-size-16">
-                                <div class="mb-10">SUN</div>
-                                <i class="wi-day-storm-showers font-size-24 mb-10"></i>
-                                <div>14°
-                                  <span class="font-size-12">C</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Card -->
-              </div>
+
+          </div>
+          </div>
+      </div>
+
+</div>
+</div>
+<div class="row" id="data2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Likelihood of Crime by Hour</h3>
+        </div>
+        <div class="panel-body" >
+            <div id="myDiv" style="width: auto;"></div>
+          <!-- <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul> -->
+        </div>
+    </div>
+</div>
+<div class="row" id="data3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Severity by Hour</h3>
+        </div>
+        <div class="panel-body" >
+            <!-- <div id="myDiv" style="width: auto;"></div> -->
+            <div id="my_dataviz"></div>
+
+            <!-- Load color palettes -->
+
+          <!-- <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul> -->
+        </div>
+    </div>
+</div>
     </body>
 </html>
