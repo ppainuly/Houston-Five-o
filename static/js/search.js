@@ -86,8 +86,8 @@ function mapLoaded() {
   
 }
 var trace1 = {
-  x: [1, 2, 3, 4],
-  y: [0, 2, 3, 5],
+  x: ['2013-10-04 22:00:00', '2013-11-04 23:00:00', '2013-12-05 0:0:00'],
+  y: [1, 3, 6],
   fill: 'tozeroy',
   type: 'scatter'
 };
@@ -109,6 +109,41 @@ $('.mapboxgl-ctrl-geocoder mapboxgl-ctrl').on('keypress',function(e) {
       $("#data3").show();
   }
 });
+
+function buildPlot() {
+    
+  let url = `/plot`;
+  
+  d3.json(url).then(plot_data => {
+      let hours_x = daplot_datata.hour;
+      let crimeSeverity_y = plot_data.crimeSeverity;
+  
+      console.log(hours_x);
+      console.log(crimeSeverity_y);
+  
+      let trace = [{
+        x: hours_x,
+        y: crimeSeverity_y,
+        type: 'scatter',
+      }];
+  
+      let layout = {
+        title: `Crime Prediction Next 6 Hours`,
+        yaxis: {
+          autorange: true
+        },
+        xaxis: {
+          autorange: true,
+          title: `Time`
+        },
+        showlegend: true,
+        height: 500,
+        width: 900
+      };
+  
+      Plotly.newPlot('my_dataviz', trace, layout);
+    });
+  };
 
 //const cells = table.getElementsByTagName('td')
 

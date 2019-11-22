@@ -1,5 +1,6 @@
 #from flask import Flask,redirect, render_template
 import json
+import severityPrediction
 from flask import (
     Flask,
     url_for,
@@ -31,6 +32,24 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+@app.route("/model")
+def model():
+    return render_template("model.html")
+
+@app.route("/plot")
+def plot():
+    plot_list = severityPrediction.Values()
+
+    plot_data = {
+        "hour": plot_list[0],
+        "crimeSeverity": plot_list[1]
+    }
+    return jsonify(plot_data)
 
 
 @app.route("/api/incidents")
