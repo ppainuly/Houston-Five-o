@@ -3,6 +3,9 @@
 
 // Map via Mapbox GL
 
+let latCoord;
+let lngCoord;
+
 $(document).ready(init);
 
 function init(jQuery) {
@@ -71,11 +74,77 @@ function mapLoaded() {
     console.log(e)
     console.log(e['lngLat']);
     console.log(e['lngLat']['lng'])
+    console.log(e['lngLat']['lat'])
+
+    latCoord = e['lngLat']['lat'];
+    lngCoord = e['lngLat']['lng'];
+
     new mapboxgl.Popup()
     .setLngLat(e.lngLat)
     .addTo(map);
 
     console.log('clicked')
+
+    console.log("beginning");
+    console.log(latCoord)
+    console.log(lngCoord)
+    d3.json(`/plot/${latCoord}/${lngCoord}`).then(function(plot_data){ 
+      console.log("starting method")
+
+      var layout = {
+        margin: {
+          pad: 10
+        },
+          title: {
+            text:'Predicted Crime Severity by Hour',
+            font: {
+              family: 'Arial, sans-serif',
+              size: 24,
+              color: 'rgb(90, 90, 90)'
+            }
+          },
+          yaxis: {
+            autorange: true,
+            title: `CRIME SEVERITY`,
+            titlefont: {
+              family: 'Arial, sans-serif',
+              size: 18,
+              color: 'rgb(180, 180, 180)'
+            },
+            tickfont: {
+              family: 'Arial, sans-serif',
+              size: 14,
+              color: 'rgb(110, 110, 110)'
+            }
+          },
+          xaxis: {
+            autorange: true,
+            title: `HOUR`,
+            titlefont: {
+              family: 'Arial, sans-serif',
+              size: 18,
+              color: 'rgb(180, 180, 180)'
+            },
+            tickfont: {
+              family: 'Arial, sans-serif',
+              size: 14,
+              color: 'rgb(110, 110, 110)'
+            },
+            showgrid: false,
+            zeroline: false,
+            showline: false,
+            tickformat: '%H',
+            nticks: 6
+            // autotick: true
+            
+          }
+      };
+                
+    console.log("post layout");
+    Plotly.plot("my_dataviz", plot_data, layout);
+    console.log("plotted");
+    });
+
     $("#data1").show();
     $("#data2").show();
     $("#data3").show();
@@ -91,7 +160,6 @@ var trace1 = {
   fill: 'tozeroy',
   type: 'scatter'
 };
-
 
 var data = [trace1];
 
@@ -110,40 +178,7 @@ $('.mapboxgl-ctrl-geocoder mapboxgl-ctrl').on('keypress',function(e) {
   }
 });
 
-function buildPlot() {
-    
-  let url = `/plot`;
-  
-  d3.json(url).then(plot_data => {
-      let hours_x = daplot_datata.hour;
-      let crimeSeverity_y = plot_data.crimeSeverity;
-  
-      console.log(hours_x);
-      console.log(crimeSeverity_y);
-  
-      let trace = [{
-        x: hours_x,
-        y: crimeSeverity_y,
-        type: 'scatter',
-      }];
-  
-      let layout = {
-        title: `Crime Prediction Next 6 Hours`,
-        yaxis: {
-          autorange: true
-        },
-        xaxis: {
-          autorange: true,
-          title: `Time`
-        },
-        showlegend: true,
-        height: 500,
-        width: 900
-      };
-  
-      Plotly.newPlot('my_dataviz', trace, layout);
-    });
-  };
+
 
 //const cells = table.getElementsByTagName('td')
 
@@ -166,5 +201,3 @@ function buildPlot() {
 //       $("#data3").show();
 //   }
 // });
-
-
