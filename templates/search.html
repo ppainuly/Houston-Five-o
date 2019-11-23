@@ -4,12 +4,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Simple HTML Page with Bootstrap and Mapbox GL</title>
-
+    <title>Houston Five</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Mapbox GL JS js and css -->
      <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' /> -->
@@ -18,8 +22,8 @@
      
 
      <!-- mapbox geocoder -->
-     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js'></script>  
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
      <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
      <!-- <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
@@ -51,7 +55,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static',filename='img/favicon-76.png') }}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static',filename='img/favicon-120.png') }}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='img/favicon-152.png') }}">
+  <link rel="icon" sizes="196x196" href="{{ url_for('static',filename='img/favicon-196.png') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='img/favicon.ico') }}">
   
   </head>
 
@@ -85,10 +93,9 @@
                       <li><a href="{{ url_for('crime') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
                         class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Historical Map</a></li>
                   <li><a href="{{ url_for('index') }}" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
-                          class="fa fa-clock-o"></i>&nbsp;&nbsp;Live Map</a></li>
-        
-                  <li class="fa fa-arrows-alt"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i
-                        class="fa fa-list white"></i>&nbsp;&nbsp;Predictor</a></li>
+                          class="fa fa-clock-o"></i>&nbsp;&nbsp;Live Map</a></li>       
+                  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i
+                          class="fa fa-bar-chart"></i>&nbsp;&nbsp;Predictor</a></li>
                 </ul>
               </div>
               <!--/.navbar-collapse -->
@@ -149,11 +156,14 @@
                     <div class="panel-body">
                         <div class="weather-day vertical-align">
                             <div class="vertical-align-middle font-size-16">
-                              <div class="mb-10">AGORA</div>
+                              <div class="mb-10" id="address1">AGORA</div>
                               <i class="wi-day-sunny font-size-24 mb-10"></i>
-                              <div>November 21, 2019
-                                <span class="font-size-12">C</span>
+                              <div>
+                                <span class="font-size-12">Saturday</span>
                               </div>
+                              <div>
+                                  <span class="font-size-12">November 23rd, 2019</span>
+                                </div>
                             </div>
                           </div>
 
