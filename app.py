@@ -1,6 +1,6 @@
 #from flask import Flask,redirect, render_template
 import json
-import severityPrediction
+from severityPrediction import Values
 from flask import (
     Flask,
     url_for,
@@ -43,12 +43,15 @@ def model():
 
 @app.route("/plot")
 def plot():
-    plot_list = severityPrediction.Values()
+    plot_list = Values()
 
-    plot_data = {
-        "hour": plot_list[0],
-        "crimeSeverity": plot_list[1]
-    }
+    plot_data = [{
+        "x" : plot_list[0],
+        "y" : plot_list[1],
+        "fill" : "tozeroy",
+        "type" : "scatter"
+    }]
+
     return jsonify(plot_data)
 
 
