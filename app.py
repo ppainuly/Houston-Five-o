@@ -83,7 +83,8 @@ def neighbourhood(lat,lng):
     print('Building trace')
     h = ['12AM','1AM', '2AM','3AM','4AM','5AM','6AM','7AM','8AM','9AM','10AM','11AM','12PM','1PM','2PM','3PM', '4PM','5PM','6PM','7PM','8PM', '9PM', '10PM','11PM']
     count = df_area['Predictions'].to_list()
-    count_round = [round(x) for x in count]
+    count_ave = [c/7 for c in count]
+    count_round = [round(x) for x in count_ave]
     # trace1 = [
     #     {
     #       "x": h,
