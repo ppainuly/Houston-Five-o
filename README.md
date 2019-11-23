@@ -4,7 +4,7 @@
 </p>
 <hr>
 
-APP URL : https://live-crime.herokuapp.com/
+APP URL : https://sheltered-shelf-68804.herokuapp.com/
 
 Previous version repo url : https://github.com/ppainuly/Crimetracker-app
 
