@@ -92,13 +92,51 @@ function mapLoaded() {
       console.log("starting method")
 
       var layout = {
-          title: `Crime Prediction Next 6 Hours`,
+        margin: {
+          pad: 10
+        },
+          title: {
+            text:'Predicted Crime Severity by Hour',
+            font: {
+              family: 'Arial, sans-serif',
+              size: 24,
+              color: 'rgb(90, 90, 90)'
+            }
+          },
           yaxis: {
-            autorange: true
+            autorange: true,
+            title: `CRIME SEVERITY`,
+            titlefont: {
+              family: 'Arial, sans-serif',
+              size: 18,
+              color: 'rgb(180, 180, 180)'
+            },
+            tickfont: {
+              family: 'Arial, sans-serif',
+              size: 14,
+              color: 'rgb(110, 110, 110)'
+            }
           },
           xaxis: {
             autorange: true,
-            title: `Hour`
+            title: `HOUR`,
+            titlefont: {
+              family: 'Arial, sans-serif',
+              size: 18,
+              color: 'rgb(180, 180, 180)'
+            },
+            tickfont: {
+              family: 'Arial, sans-serif',
+              size: 14,
+              color: 'rgb(110, 110, 110)'
+            },
+            showgrid: false,
+            zeroline: false,
+            showline: false,
+            tickformat: '%H',
+            nticks: 6
+            // autotick: true
+            
           }
       };
                 
