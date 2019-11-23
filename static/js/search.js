@@ -3,6 +3,9 @@
 
 // Map via Mapbox GL
 
+let latCoord;
+let lngCoord;
+
 $(document).ready(init);
 
 function init(jQuery) {
@@ -72,6 +75,10 @@ function mapLoaded() {
     console.log(e['lngLat']);
     console.log(e['lngLat']['lng'])
     console.log(e['lngLat']['lat'])
+
+    latCoord = e['lngLat']['lat'];
+    lngCoord = e['lngLat']['lng'];
+
     new mapboxgl.Popup()
     .setLngLat(e.lngLat)
     .addTo(map);
@@ -79,8 +86,11 @@ function mapLoaded() {
     console.log('clicked')
 
     console.log("beginning");
-    d3.json("/plot").then(function(plot_data){
+    console.log(latCoord)
+    console.log(lngCoord)
+    d3.json(`/plot/${latCoord}/${lngCoord}`).then(function(plot_data){ 
       console.log("starting method")
+
       var layout = {
           title: `Crime Prediction Next 6 Hours`,
           yaxis: {
@@ -153,5 +163,3 @@ $('.mapboxgl-ctrl-geocoder mapboxgl-ctrl').on('keypress',function(e) {
 //       $("#data3").show();
 //   }
 // });
-
-

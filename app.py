@@ -1,6 +1,6 @@
 #from flask import Flask,redirect, render_template
 import json
-from severityPrediction import Values
+from severityPrediction import Locator
 from flask import (
     Flask,
     url_for,
@@ -41,9 +41,9 @@ def search():
 def model():
     return render_template("model.html")
 
-@app.route("/plot")
-def plot():
-    plot_list = Values()
+@app.route("/plot/<lat>/<lng>")
+def plot(lat, lng):
+    plot_list = Locator(lat, lng)
 
     plot_data = [{
         "x" : plot_list[0],
