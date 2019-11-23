@@ -43,6 +43,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/model.css') }}">
 
+
     <!-- juqery required for bootstrap js -->
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -139,7 +140,7 @@
 
           
             <!-- START YOUR BOOTSTRAP GOODNESS HERE -->
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Location Prediciton</h3>
@@ -148,22 +149,43 @@
                     </div>
                 </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Location</h3>
+                    <h4 class="panel-title" style ="font-family: Poppins, sans-serif; font-weight: 700; display: block; font-size: 20px ; letter-spacing: 1px;">Likely Criminal Activity</h4>
+                    <div class="panel-body text-center">
+                      <a href="#"><img src="../static/img/icons8-black-ski-mask-80.png" style="padding: 20x;"/>
+                        <figcaption class="badge badge-pill badge-secondary" style ="padding: 5px"> Theft </figcaption>
+                      </a>
+                      <a href="#" ><img src="../static/img/icons8-home-alarm-64.png" style="padding: 20px;"/>
+                        <figcaption class="badge badge-pill badge-secondary" style="padding: 5px;"> Burglary </figcaption></a>
+                      <a href="#" ><img src="../static/img/icons8-car-theft-80.png" style="padding: 20px;"/>
+                        <figcaption class="badge badge-pill badge-secondary" style="padding: 5px;"> Auto Theft </figcaption style ="text-align: justify;
+                          width: [width of img]"></a>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title" style ="font-family: Poppins, sans-serif; font-weight: 700; display: block; font-size: 20px ; letter-spacing: 1px;">Location Selected</h4>
+                    <!-- <h4 class="panel-title">Location</h4> -->
                     <div class="panel-body">
                         <div class="weather-day vertical-align">
                             <div class="vertical-align-middle font-size-16">
-                              <div class="mb-10" id="address1">AGORA</div>
+                              <h5><div class="mb-10" id="address1">co-ordinates</div></h5>
                               <i class="wi-day-sunny font-size-24 mb-10"></i>
                               <div>
-                                <span class="font-size-12">Saturday</span>
+                                <span class="font-size-12"><h5>Today's is a Saturday</h5></span>
                               </div>
                               <div>
-                                  <span class="font-size-12">November 23rd, 2019</span>
+                                  <span class="font-size-12"><h5 id = "day1">November 23rd, 2019</h5></span>
                                 </div>
+                                <div>
+                                    <span class="font-size-12"><h5 id="time1">Time</h5></span>
+                                  </div>
                             </div>
                           </div>
 
@@ -176,7 +198,7 @@
         <div class="row" id="data2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Likelihood of Crime by Hour</h3>
+                  <h4 class="panel-title" style ="font-family: Poppins, sans-serif; font-weight: 700; display: block; font-size: 20px ; letter-spacing: 1px;">Likelihood of Crime by Hour</h4>
                 </div>
                 <div class="panel-body" >
                     <div id="myDiv" style="width: auto;"></div>
@@ -193,28 +215,34 @@
         <div class="row" id="data3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Severity by Hour</h3>
+                  <h4 class="panel-title" style ="font-family: Poppins, sans-serif; font-weight: 700; display: block; font-size: 20px ; letter-spacing: 1px;">Severity by Hour</h4>
                 </div>
                 <div class="panel-body" >
                     <!-- <div id="myDiv" style="width: auto;"></div> -->
                     <div id="my_dataviz" style="width: auto;"
                     ></div>
 
-                    <!-- Load color palettes -->
-
-                  <!-- <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul> -->
                 </div>
             </div>
         </div>
       <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; <span id="currentYear">THIS YEAR</span></p>
+      <!-- <footer class="footer">
+        <p>&copy; Niesha Kovich | Pratyush Painuly | Ivonne Soto | Sara Flores</p>
+
+      </footer> -->
+      <footer style="height: 100px; padding: 20px">  
+
+        <div class="container p-3 mb-2 bg-light text-dark">
+      
+
+          <div class="row d-flex justify-content-center">
+
+        <div class="footer-copyright text-center py-3" ><a style="color: black;">© 2019 Copyright <br>
+          Niesha Kovich | Pratyush Painuly | Ivonne Soto | Sara Flores</a>
+        </div>
+      </div>
+
+      </div>
       </footer>
 
     </div> <!-- /container -->

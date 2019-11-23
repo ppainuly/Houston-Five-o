@@ -85,6 +85,16 @@ function mapLoaded() {
 
     $('#address1').text(`Co-ordinates - (${latCoord}, ${lngCoord})`);
 
+    var today = new Date();
+    var date1 = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    $('#day1').text("Today's date is " + date1);
+    
+    //var today = new Date();
+    //var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var time = new Date();
+    time1 = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    $('#time1').text("Its " + time1 + " right now");
+
     //console.log('clicked')
 
     //console.log("beginning");
