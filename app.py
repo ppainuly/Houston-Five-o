@@ -49,7 +49,10 @@ def plot(lat, lng):
         "x" : plot_list[0],
         "y" : plot_list[1],
         "fill" : "tozeroy",
-        "type" : "scatter"
+        "type" : "scatter",
+        "mode" : "lines+markers+text",
+        "textposition" : "top center",
+        "text" : plot_list[1]
     }]
 
     return jsonify(plot_data)
