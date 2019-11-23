@@ -45,9 +45,9 @@ def model():
 @app.route("/plot/<lat>/<lng>")
 def plot(lat, lng):
     plot_list = Locator(lat, lng)
-
+    h1 = ['11AM', '12PM', '1PM', '2PM', '3PM', '4PM']
     plot_data = [{
-        "x" : plot_list[0],
+        "x" : h1,#plot_list[0],
         "y" : plot_list[1],
         "fill" : "tozeroy",
         "type" : "scatter",
