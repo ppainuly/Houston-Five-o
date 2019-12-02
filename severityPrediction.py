@@ -205,7 +205,7 @@ def Locator(lat, lon):
                 nextSixHours.append(nextHour)
         return nextSixHours
 
-    nextSix(currentHour)
+    nextSixHours = nextSix(currentHour)
 
     fulltimefuture = []
 
