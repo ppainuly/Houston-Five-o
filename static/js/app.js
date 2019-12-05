@@ -277,9 +277,7 @@ d3.json('/api/incidents').then(function(incidents){
     }else{
       violentType.push(incident);
     }
-    console.log('THE TRAFFIC INCIDENTS ARE');
   });
-  console.log(trafficType)
   createList(incidents);
 
 });
