@@ -4,7 +4,9 @@ let markerArray = []
 let popup = []
 let incidentType = []
 let trafficType = []
-var markers = new L.FeatureGroup();
+let violentType = []
+let incidentAll = []
+let markers 
 
 
 map = L.map("map", {
@@ -269,8 +271,11 @@ d3.json('/api/incidents').then(function(incidents){
     console.log(incident.type);
     console.log(i)
     iType = incident.type
-    if(iType.toUpperCase().includes('TRAFFIC')){
-      trafficType.push(incident)
+    incidentAll.push(incident)
+    if((iType.toUpperCase().includes('TRAFFIC') || (iType.toUpperCase().includes('CRASH')))){
+      trafficType.push(incident);
+    }else{
+      violentType.push(incident);
     }
     console.log('THE TRAFFIC INCIDENTS ARE');
   });
@@ -284,7 +289,7 @@ function createList(incidents){
   console.log("Starting incident function....")
   /* Add Live crime incidents to the Sidebar and the map*/
   $("#feature-list tbody").empty();
-
+  markers = new L.FeatureGroup();
   // Clear map markers to rebuild new markers
   latlon = []
   markerArray = []
@@ -422,12 +427,14 @@ function createList(incidents){
       popupAnchor: [1, -34],
       shadowSize: [37, 37]
      });  
-    L.marker(incident.location, {icon: icon})
-     .bindPopup("<h3>" + incident.type + "</h3>   <hr><h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>")
-     .addTo(map);
+    let marker = L.marker(incident.location, {icon: icon})
+     marker.bindPopup("<h3>" + incident.type + "</h3>   <hr><h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>")
+     //.addTo(map);
    popup.push("<h3>" + incident.type + "</h3> <hr> <h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>");
    markerArray.push(L.marker(incident.location))
+   markers.addLayer(marker);
 });
+map.addLayer(markers);
 let markerActive;
 $('.feature-row').bind('mouseover',function(){
   console.log("Event clicked")
@@ -563,9 +570,25 @@ $("#full-extent-btn").click(function() {
   return false;
 });
 
-$("#TestButton").click(function(){
-  console.log("Test button clicked");
+$("#nonviolent").click(function(){
+
+  console.log(markers)
+  map.removeLayer(markers);
   createList(trafficType);
+});
+
+$("#violent").click(function(){
+
+  console.log(markers)
+  map.removeLayer(markers);
+  createList(violentType);
+});
+
+$("#incidentall").click(function(){
+
+  console.log(markers)
+  map.removeLayer(markers);
+  createList(incidentAll);
 });
 
 // /* Single marker cluster layer to hold all clusters */
