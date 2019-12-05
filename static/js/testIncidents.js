@@ -3,9 +3,6 @@ let latlon = []
 let markerArray = []
 let popup = []
 let incidentType = []
-let trafficType = []
-var markers = new L.FeatureGroup();
-
 
 map = L.map("map", {
   center: [29.8204, -95.3298],
@@ -265,263 +262,92 @@ function sidebarClick(id) {
 d3.json('/api/incidents').then(function(incidents){
   console.log("Starting Incidents")
   console.log(incidents);
-  incidents.forEach(function(incident,i){
-    console.log(incident.type);
-    console.log(i)
-    iType = incident.type
-    if(iType.toUpperCase().includes('TRAFFIC')){
-      trafficType.push(incident)
-    }
-    console.log('THE TRAFFIC INCIDENTS ARE');
-  });
-  console.log(trafficType)
-  createList(incidents);
-
-});
 
 
-function createList(incidents){
-  console.log("Starting incident function....")
   /* Add Live crime incidents to the Sidebar and the map*/
   $("#feature-list tbody").empty();
-
-  // Clear map markers to rebuild new markers
-  latlon = []
-  markerArray = []
-  incidentType = []
-  popup = []
   /* Loop through theaters layer and add only features which are in the map bounds */
-  // incidents.forEach(function (incident, i) {
-
-  //       let type = "";
-  //       latlon.push(incident.location)
-  //       //$('.list-group').httml = ""
-  //       incidentType.push(incident.type)
-  //       var iconurl = "";
-
-  //       if(incident.type.startsWith("CRASH")){
-  //           $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-car-100v2.png"></td><td class="feature-name"><h4>' + incident.address  + '</h4><br /><span class="badge badge-pill badge-primary">Montrose</span> <span class="badge badge-pill badge-secondary">'+incident.time+'</span>');
-                        
-  //           iconurl = "../static/img/icons8-car-100v2.png";
-  //       } else if(incident.type.startsWith("TRAFFIC")){
-  //           $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-under-construction-64.png"></td><td class="feature-name">' + incident.address );
-  //           iconurl = "../static/img/icons8-under-construction-64.png";
-  //       } else{
-  //           $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-handcuffs-50.png"></td><td class="feature-name">' + incident.address );
-  //           iconurl = "../static/img/icons8-handcuffs-50.png";
-  //       }
-  //       var icon = new L.Icon({
-  //         iconUrl: iconurl,
-  //         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  //         iconSize: [32, 32],
-  //         iconAnchor: [12, 41],
-  //         popupAnchor: [1, -34],
-  //         shadowSize: [37, 37]
-  //        });  
-  //       L.marker(incident.location, {icon: icon})
-  //        .bindPopup("<h3>" + incident.type + "</h3>   <hr><h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>")
-  //        .addTo(map);
-  //      popup.push("<h3>" + incident.type + "</h3> <hr> <h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>");
-  //      markerArray.push(L.marker(incident.location))
-
-  //   });
-
-
-  //   let markerActive;
-
-
-  //   $('.feature-row').bind('mouseover',function(){
-  //     console.log("Event clicked")
-  //     var index = $( ".feature-row" ).index( this );
-  //     console.log(index)
-  //     latlang = markerArray[index].getLatLng()
-  //     // var numMarker = L.ExtraMarkers.icon({
-  //     //   icon: 'fa-number',
-  //     //   number: index,
-  //     //   markerColor: 'yellow'
-  //     //   }); icons8-car-100hover.png
-  //     if(incidentType[index].startsWith("CRASH")){
-
-  //     var iconHover = new L.Icon({
-  //       iconUrl: '../static/img/icons8-car-100v2hover.png',
-  //       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  //       iconSize: [32, 32],
-  //       iconAnchor: [11, 41],
-  //       popupAnchor: [1, -34],
-  //       shadowSize: [46, 46],
-  //      });  
-
-  //   }else if(incidentType[index].startsWith("TRAFFIC")){
-  //     var iconHover = new L.Icon({
-  //       iconUrl: '../static/img/icons8-under-construction-64hover.png',
-  //       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  //       iconSize: [32, 32],
-  //       iconAnchor: [11, 41],
-  //       popupAnchor: [1, -34],
-  //       shadowSize: [46, 46],
-  //      });  
-  //   } else{
-  //     var iconHover = new L.Icon({
-  //       iconUrl: '../static/img/icons8-handcuffs-50hover.png',
-  //       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  //       iconSize: [32, 32],
-  //       iconAnchor: [11, 41],
-  //       popupAnchor: [1, -34],
-  //       shadowSize: [46, 46],
-
-  //     });
-  //   }
-
   incidents.forEach(function (incident, i) {
-    let type = "";
-    latlon.push(incident.location)
-    //$('.list-group').httml = ""
-    incidentType.push(incident.type)
-    var iconurl = "";
-    if(incident.type.startsWith("CRASH")){
-        $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-car-100v2.png"></td><td class="feature-name">' + incident.address  );
-        iconurl = "../static/img/icons8-car-100v2.png";
-    } 
-    else if(incident.type.startsWith("TRAFFIC")){
-        $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-under-construction-64.png"></td><td class="feature-name">' + incident.address );
-        iconurl = "../static/img/icons8-under-construction-64.png";
-    } 
-    else if(incident.type.includes("Arson")){
-        $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-fires-16 (1).png"></td><td class="feature-name">' + incident.address );
-        iconurl = "../static/img/icons8-fires-16 (1).png";   
-    } 
-    else if(incident.type.includes("Robbery")){
-        $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-black-ski-mask-50.png"></td><td class="feature-name">' + incident.address );
-        iconurl = "../static/img/icons8-black-ski-mask-50.png";
-    }
-   else if(incident.type.includes("Rape") || incident.type.includes("Sexual Assault")){
-    $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-icons8-handcuffs-50.png"></td><td class="feature-name">' + incident.address );
-    iconurl = "../static/img/icons8-icons8-handcuffs-50.png";
-   }
-   else if(incident.type.includes("Death") || incident.type.includes("Homicide") || (incident.type.includes("Deceased"))){
-    $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-murder-chalk-50.png"></td><td class="feature-name">' + incident.address );
-    iconurl = "../static/img/icons8-murder-chalk-50.png";
-   } 
-   else if(incident.type.includes("Theft")){
-    $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-home-alarm-16 (1).png"></td><td class="feature-name">' + incident.address );
-    iconurl = "../static/img/icons8-home-alarm-16 (1).png";
-   }  
-   else if(incident.type.includes("Shooting") || incident.type.includes("Stabbing") || incident.type.includes("Aggravated Assault")){
-    $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-gun-48 (1).png"></td><td class="feature-name">' + incident.address );
-    iconurl = "../static/img/icons8-gun-48 (1).png";
-   } 
-    else{
-        $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-handcuffs-50.png"></td><td class="feature-name">' + incident.address );
-        iconurl = "../static/img/icons8-handcuffs-50.png";
-    }
-    var icon = new L.Icon({
-      iconUrl: iconurl,
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [32, 32],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [37, 37]
-     });  
-    L.marker(incident.location, {icon: icon})
-     .bindPopup("<h3>" + incident.type + "</h3>   <hr><h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>")
-     .addTo(map);
-   popup.push("<h3>" + incident.type + "</h3> <hr> <h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>");
-   markerArray.push(L.marker(incident.location))
-});
-let markerActive;
-$('.feature-row').bind('mouseover',function(){
-  console.log("Event clicked")
-  var index = $( ".feature-row" ).index( this );
-  console.log(index)
-  latlang = markerArray[index].getLatLng()
-  // var numMarker = L.ExtraMarkers.icon({
-  //   icon: 'fa-number',
-  //   number: index,
-  //   markerColor: 'yellow'
-  //   }); icons8-car-100hover.png
-  if(incidentType[index].startsWith("CRASH")){
-  var iconHover = new L.Icon({
-    iconUrl: '../static/img/icons8-car-100v2hover.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [32, 32],
-    iconAnchor: [11, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [46, 46],
-   });  
-}else if(incidentType[index].startsWith("TRAFFIC")){
-  var iconHover = new L.Icon({
-    iconUrl: '../static/img/icons8-under-construction-64hover.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [32, 32],
-    iconAnchor: [11, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [46, 46],
-   });  
-  }else if(incidentType[index].includes("Arson")){
-    var iconHover = new L.Icon({
-      iconUrl: '../static/img/icons8-fires-16 (hover).png',
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-      iconSize: [32, 32],
-      iconAnchor: [11, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [46, 46],
-     });
-  }else if(incidentType[index].includes("Robbery")){
+
+        let type = "";
+        latlon.push(incident.location)
+        //$('.list-group').httml = ""
+        incidentType.push(incident.type)
+        var iconurl = "";
+
+        if(incident.type.startsWith("CRASH")){
+            $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-car-100v2.png"></td><td class="feature-name"><h4>' + incident.address  + '</h4><br /><span class="badge badge-pill badge-primary">Montrose</span> <span class="badge badge-pill badge-secondary">'+incident.time+'</span>');
+            
+            
+            iconurl = "../static/img/icons8-car-100v2.png";
+        } else if(incident.type.startsWith("TRAFFIC")){
+            $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-under-construction-64.png"></td><td class="feature-name">' + incident.address );
+            iconurl = "../static/img/icons8-under-construction-64.png";
+        } else{
+            $("#feature-list tbody").append('<tr class="feature-row" id="'+ i + 'lat="' + incident.location[0] + '" lng="' + incident.location[1]+ '"><td style="vertical-align: middle;"><img width="22" height="22" src="../static/img/icons8-handcuffs-50.png"></td><td class="feature-name">' + incident.address );
+            iconurl = "../static/img/icons8-handcuffs-50.png";
+        }
+        var icon = new L.Icon({
+          iconUrl: iconurl,
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+          iconSize: [32, 32],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [37, 37]
+         });  
+        L.marker(incident.location, {icon: icon})
+         .bindPopup("<h3>" + incident.type + "</h3>   <hr><h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>")
+         .addTo(map);
+       popup.push("<h3>" + incident.type + "</h3> <hr> <h4>" + incident.address.toUpperCase() + "</h4> <hr> <h4>" + incident.time + "</h4>");
+       markerArray.push(L.marker(incident.location))
+
+    });
+
+
+    let markerActive;
+
+
+    $('.feature-row').bind('mouseover',function(){
+      console.log("Event clicked")
+      var index = $( ".feature-row" ).index( this );
+      console.log(index)
+      latlang = markerArray[index].getLatLng()
+      // var numMarker = L.ExtraMarkers.icon({
+      //   icon: 'fa-number',
+      //   number: index,
+      //   markerColor: 'yellow'
+      //   }); icons8-car-100hover.png
+      if(incidentType[index].startsWith("CRASH")){
+
       var iconHover = new L.Icon({
-        iconUrl: '../static/img/icons8-black-ski-mask-50 (hover).png',
+        iconUrl: '../static/img/icons8-car-100v2hover.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [32, 32],
         iconAnchor: [11, 41],
         popupAnchor: [1, -34],
         shadowSize: [46, 46],
-       });
-      }else if(incidentType[index].includes("Rape") || incidentType[index].includes("Sexual Assault")){
-        var iconHover = new L.Icon({
-          iconUrl: '../static/img/icons8-handcuffs-50hover.png',
-          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-          iconSize: [32, 32],
-          iconAnchor: [11, 41],
-          popupAnchor: [1, -34],
-          shadowSize: [46, 46],
-         }); 
-        }else if(incidentType[index].includes("Death") || incidentType[index].includes("Homicide") || incidentType[index].includes("Deceased")){
-          var iconHover = new L.Icon({
-            iconUrl: '../static/img/icons8-murder-chalk-50 (hover).png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [32, 32],
-            iconAnchor: [11, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [46, 46],
-           }); 
-          }else if(incidentType[index].includes("Theft")){
-            var iconHover = new L.Icon({
-              iconUrl: '../static/img/icons8-home-alarm-16 (hover).png',
-              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-              iconSize: [32, 32],
-              iconAnchor: [11, 41],
-              popupAnchor: [1, -34],
-              shadowSize: [46, 46],
-             });   
-          }else if(incidentType[index].includes("Shooting")|| incidentType[index].includes("Stabbing") || incidentType[index].includes("Aggravated Assault")){
-            var iconHover = new L.Icon({
-            iconUrl: '../static/img/icons8-gun-48 (hover).png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [32, 32],
-            iconAnchor: [11, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [46, 46],
-          });
-          }else{
-            var iconHover = new L.Icon({
-            iconUrl: '../static/img/icons8-handcuffs-50hover.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [32, 32],
-            iconAnchor: [11, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [46, 46],
-          });
-    }
+       });  
 
+    }else if(incidentType[index].startsWith("TRAFFIC")){
+      var iconHover = new L.Icon({
+        iconUrl: '../static/img/icons8-under-construction-64hover.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [32, 32],
+        iconAnchor: [11, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [46, 46],
+       });  
+    } else{
+      var iconHover = new L.Icon({
+        iconUrl: '../static/img/icons8-handcuffs-50hover.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [32, 32],
+        iconAnchor: [11, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [46, 46],
+
+      });
+    }
     markerActive = new L.Marker(latlang, {icon: iconHover});
     map.addLayer(markerActive);
     map.panTo(latlang);
@@ -553,7 +379,7 @@ $('.feature-row').bind('mouseover',function(){
           return !reg.test(text);
       }).hide();
   });
-}
+});
 
 // SHow entire map window with markers
 $("#full-extent-btn").click(function() {
@@ -563,10 +389,7 @@ $("#full-extent-btn").click(function() {
   return false;
 });
 
-$("#TestButton").click(function(){
-  console.log("Test button clicked");
-  createList(trafficType);
-});
+
 
 // /* Single marker cluster layer to hold all clusters */
 var markerClusters = new L.MarkerClusterGroup({

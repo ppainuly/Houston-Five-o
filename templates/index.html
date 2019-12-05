@@ -54,7 +54,6 @@
         </form>
         <ul class="nav navbar-nav">
 
-
             <li><a href="{{ url_for('about') }}" style="color:white;"><i
               class="fa fa-question-circle white"></i>About Us</a></li>
 
@@ -91,14 +90,26 @@
                 <input type="text" class="form-control search" placeholder="Filter" />
               </div>
               <div class="col-xs-4 col-md-4">
-                <!--<button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;</button> -->
                 <div class="blink_me" style="padding-top:5px;font-size: 17px;color:red;"><span
                     class="glyphicon glyphicon-time"></span> Live</div>
               </div>
 
             </div>
+            <div class ="row" style="padding-top:2px;">
+                <div class="col-xs-5 col-md-5">
+                  <!-- <button type="button" id = "TestButton" class="btn btn-primary">Test Button</button> -->
+                  <button type="button" class="btn btn-success">Non-Violent</button>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <!-- <button type="button" id = "TestButton" class="btn btn-primary">Test Button</button> -->
+                  <button type="button" class="btn btn-success">Violent</button>
+                </div>
+                <div class="col-xs-1 col-md-1">
+                  <!-- <button type="button" id = "TestButton" class="btn btn-primary">Test Button</button> -->
+                  <button type="button" class="btn btn-success">All</button>
+                </div>
+            </div>
           </div>
-
           <div class="sidebar-table">
             <table class="table table-hover" id="feature-list">
               <thead class="hidden">
@@ -124,6 +135,7 @@
 
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
