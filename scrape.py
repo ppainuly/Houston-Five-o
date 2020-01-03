@@ -310,6 +310,7 @@ def execute_hpdblog():
 
 start = time.perf_counter()
 execute_hpdtraffic()
+time.sleep(60)
 execute_hpdblog()
 stop = time.perf_counter()
 print(f'Total time take is {stop - start}')
