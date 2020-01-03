@@ -4,7 +4,7 @@
 </p>
 <hr>
 
-APP URL : https://sheltered-shelf-68804.herokuapp.com/
+APP URL : https://houston-five-o.herokuapp.com/
 
 Previous version repo url : https://github.com/ppainuly/Crimetracker-app
 
